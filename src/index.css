@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-futuristic-bg: var(--theme-bg, #050505);
+  --color-futuristic-accent: var(--theme-accent, #f27d26);
+  --color-futuristic-glow: var(--theme-glow, rgba(242, 125, 38, 0.3));
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-futuristic-bg text-white font-sans overflow-hidden transition-colors duration-500;
+  }
+}
+
+/* Theme Definitions */
+[data-theme="futuristic"] {
+  --theme-bg: #050505;
+  --theme-accent: #f27d26;
+  --theme-glow: rgba(242, 125, 38, 0.3);
+}
+
+[data-theme="neon"] {
+  --theme-bg: #0a0a0f;
+  --theme-accent: #ff00ff;
+  --theme-glow: rgba(255, 0, 255, 0.3);
+}
+
+[data-theme="minimal"] {
+  --theme-bg: #f5f5f5;
+  --theme-accent: #1a1a1a;
+  --theme-glow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="luxury"] {
+  --theme-bg: #0d0d0d;
+  --theme-accent: #d4af37;
+  --theme-glow: rgba(212, 175, 55, 0.3);
+}
+
+[data-theme="minimal"] body {
+  @apply text-black;
+}
+
+@layer components {
+  .glow-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px var(--color-futuristic-glow);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 40px var(--color-futuristic-glow);
+      transform: scale(1.05);
+    }
+  }
+
+  .waveform-bar {
+    @apply bg-futuristic-accent rounded-full;
+    transition: height 0.1s ease;
+  }
+}
+
